@@ -1,4 +1,4 @@
-resource "azurerm_mysql_flexible_server" "example" {
+resource "azurerm_mysql_flexible_server" "mysql_server" {
   name                   = var.mysql_server_name
   resource_group_name    = azurerm_resource_group.resource_group.name
   location               = azurerm_resource_group.resource_group.location
@@ -14,4 +14,11 @@ resource "azurerm_mysql_flexible_server" "example" {
     size_gb = 20
     iops = 360
   }
+}
+
+resource "azurerm_mysql_flexible_server_configuration" "example" {
+  name                = "require_secure_transport"
+  resource_group_name = azurerm_resource_group.resource_group.name
+  server_name         = azurerm_mysql_flexible_server.mysql_server.name
+  value               = "OFF"
 }
