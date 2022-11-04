@@ -16,7 +16,7 @@ resource "azurerm_mysql_flexible_server" "mysql_server" {
   }
 }
 
-resource "azurerm_mysql_flexible_server_configuration" "example" {
+resource "azurerm_mysql_flexible_server_configuration" "secure_transport" {
   name                = "require_secure_transport"
   resource_group_name = azurerm_resource_group.resource_group.name
   server_name         = azurerm_mysql_flexible_server.mysql_server.name
